@@ -1,0 +1,289 @@
+/* =========================================================
+   CAD PORTFOLIO — DRAWING SHEET DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+  --paper: #EDEFEF;
+  --paper-white: #F7F8F8;
+  --ink: #1B1F23;
+  --ink-soft: #4A5257;
+  --grid-line: #D4D8DA;
+  --grid-line-strong: #B7BDC0;
+  --accent-orange: #FF6B1A;
+  --accent-blue: #2B6CB0;
+  --border-thin: 1px solid var(--grid-line-strong);
+  --border-thick: 2px solid var(--ink);
+
+  --font-display: "IBM Plex Sans Condensed", "IBM Plex Sans", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
+/* ---------- Sheet frame ---------- */
+
+.sheet {
+  flex: 1;
+  max-width: 1040px;
+  margin: 24px auto;
+  width: calc(100% - 32px);
+  background: var(--paper-white);
+  border: var(--border-thick);
+  position: relative;
+  padding: 0;
+}
+
+.sheet::before {
+  /* corner registration marks, like drawing sheet fiducials */
+  content: "";
+  position: absolute;
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px solid var(--grid-line-strong);
+  pointer-events: none;
+}
+
+/* ---------- Header ---------- */
+
+.sheet-header {
+  padding: 28px 40px 20px;
+  border-bottom: var(--border-thin);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  margin: 0 0 6px;
+}
+
+.sheet-header h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.01em;
+  margin: 0 0 8px;
+  line-height: 1.05;
+}
+
+.sheet-header p.lede {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ---------- Parts list / project index ---------- */
+
+.parts-list {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.parts-list thead th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 10px 16px;
+  border-bottom: var(--border-thin);
+  background: var(--paper);
+}
+
+.parts-list tbody tr {
+  border-bottom: 1px solid var(--grid-line);
+  transition: background 0.15s ease;
+}
+
+.parts-list tbody tr:hover {
+  background: var(--paper);
+}
+
+.parts-list td {
+  padding: 14px 16px;
+  vertical-align: top;
+}
+
+.parts-list td.item-no {
+  color: var(--ink-soft);
+  width: 48px;
+}
+
+.parts-list td.item-name a {
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.parts-list td.item-name a:hover { color: var(--accent-blue); }
+
+.parts-list td.item-tag {
+  color: var(--accent-blue);
+}
+
+.parts-list td.item-material {
+  color: var(--ink-soft);
+}
+
+/* ---------- Main content padding ---------- */
+
+.sheet-body {
+  padding: 32px 40px 48px;
+}
+
+/* ---------- Project page specifics ---------- */
+
+.callout-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: var(--border-thin);
+  margin-bottom: 32px;
+}
+
+.callout {
+  flex: 1 1 140px;
+  padding: 14px 18px;
+  border-right: var(--border-thin);
+}
+
+.callout:last-child { border-right: none; }
+
+.callout .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.callout .value {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.viewer-frame {
+  border: var(--border-thick);
+  background: var(--paper);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.viewer-frame::before {
+  content: "FIG. 1 — INTERACTIVE MODEL";
+  position: absolute;
+  top: -11px;
+  left: 16px;
+  background: var(--paper-white);
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.viewer-frame iframe {
+  display: block;
+  width: 100%;
+  height: 560px;
+  border: none;
+}
+
+.notes {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 68ch;
+}
+
+.notes h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  border-bottom: var(--border-thin);
+  padding-bottom: 8px;
+  margin-top: 40px;
+}
+
+/* ---------- Title block (nav / footer, signature element) ---------- */
+
+.title-block {
+  border-top: var(--border-thick);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.title-block .tb-cell {
+  padding: 12px 16px;
+  border-right: var(--border-thin);
+}
+
+.title-block .tb-cell:last-child { border-right: none; }
+
+.title-block .tb-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+
+.title-block .tb-value {
+  font-weight: 600;
+}
+
+.title-block nav a {
+  color: var(--ink);
+  margin-right: 14px;
+  font-weight: 600;
+}
+
+.title-block nav a:hover { color: var(--accent-orange); }
+
+@media (max-width: 640px) {
+  .sheet-header { padding: 20px 20px 16px; }
+  .sheet-body { padding: 24px 20px 36px; }
+  .title-block { grid-template-columns: 1fr 1fr; }
+  .parts-list td.item-tag,
+  .parts-list thead th:nth-child(3) { display: none; }
+}

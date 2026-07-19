@@ -1,2 +1,2 @@
-# silver-journey
+# nates-portfolio
 Nate's Portfolio

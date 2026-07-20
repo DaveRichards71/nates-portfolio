@@ -221,11 +221,47 @@ button:focus-visible {
   color: var(--ink-soft);
 }
 
-.viewer-frame iframe {
+.viewer-frame iframe,
+.viewer-frame model-viewer {
   display: block;
   width: 100%;
   height: 560px;
   border: none;
+  background: var(--paper);
+}
+
+/* Fallback shown only when the browser can't render <model-viewer>
+   (custom element never upgrades). Once <model-viewer> is defined we hide it,
+   so it can't sit in the default slot behind the canvas. Load-error cases are
+   handled separately by the .viewer-note swap in each page's script. */
+model-viewer:defined .viewer-fallback { display: none; }
+
+.viewer-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 320px;
+  padding: 32px 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* Persistent caption / download route under the viewer. */
+.viewer-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  margin: 10px 16px 0;
+}
+
+.viewer-note.viewer-note-error {
+  color: var(--accent-orange);
 }
 
 .notes {
@@ -284,6 +320,4 @@ button:focus-visible {
   .sheet-header { padding: 20px 20px 16px; }
   .sheet-body { padding: 24px 20px 36px; }
   .title-block { grid-template-columns: 1fr 1fr; }
-  .parts-list td.item-tag,
-  .parts-list thead th:nth-child(3) { display: none; }
 }

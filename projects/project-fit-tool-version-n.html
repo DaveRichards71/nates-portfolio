@@ -54,12 +54,14 @@
         <model-viewer src="../assets/models/nate-s-fit-tool.glb" alt="3D model of Nate's Fit Tool" camera-controls
           touch-action="pan-y" auto-rotate shadow-intensity="1"
           style="width: 100%; height: 560px; background: var(--paper);">
+          <!-- Shown if the browser doesn't support the <model-viewer> element. -->
+          <div class="viewer-fallback">
+            <p>This interactive 3D model needs a browser that supports 3D content —
+              try a recent version of Chrome, Edge, Firefox, or Safari.</p>
+          </div>
         </model-viewer>
-        <!--
-      <p style="font-family: var(--font-mono); font-size: 12px; margin-top: 8px;">
-        <a href="https://cad.onshape.com/documents/YOUR_DOC_LINK">Open live model in OnShape →</a>
-      </p>
-         -->
+        <!-- Persistent caption; the script below rewrites it if the model errors out. -->
+        <p class="viewer-note">Interactive model — drag to rotate, scroll to zoom.</p>
       </div>
 
       <div class="notes">
@@ -86,19 +88,33 @@
         <span class="tb-label">Navigation</span>
         <nav>
           <a href="../index.html">Index</a>
-          <a href="mailto:nate99richards@gmail.com">Contact</a>
+          <a href="mailto:nate99richards@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/naterichards99/" target="_blank" rel="noopener">LinkedIn</a>
         </nav>
       </div>
       <div class="tb-cell">
         <span class="tb-label">Sheet</span>
-        <span class="tb-value">2 / 2</span>
+        <span class="tb-value">002 / 3</span>
       </div>
       <div class="tb-cell">
         <span class="tb-label">Updated</span>
-        <span class="tb-value">2026-07-18</span>
+        <span class="tb-value">2025-11-05</span>
       </div>
     </footer>
   </div>
+
+  <script>
+    // If a model fails to load (404, corrupt .glb, WebGL blocked), replace the
+    // caption with a clear download fallback instead of leaving a blank viewer.
+    document.querySelectorAll('model-viewer').forEach(function (mv) {
+      mv.addEventListener('error', function () {
+        var note = mv.parentElement.querySelector('.viewer-note');
+        if (!note) return;
+        note.classList.add('viewer-note-error');
+        note.textContent = 'The interactive model could not be loaded — try reloading the page.';
+      });
+    });
+  </script>
 
 </body>
 

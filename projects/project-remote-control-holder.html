@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- TODO: set the project name in <title>, <h1>, and the title-block "Title" cell. -->
-<title>Project Name — CAD Portfolio</title>
+<title>Drawer-Mounted Remote Control Holders — CAD Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
@@ -14,10 +13,9 @@
 
 <div class="sheet">
   <header class="sheet-header">
-    <!-- TODO: set the sheet number (00X) and total (N). Keep both accurate as pages are added. -->
-    <p class="eyebrow">Sheet 00X — Project Detail</p>
-    <h1>Project Name</h1>
-    <p class="lede">One or two sentences on what this is and the problem it solves. Keep it plain — what the part does, not how clever the design is.</p>
+    <p class="eyebrow">Sheet 003 — Project Detail</p>
+    <h1>Drawer-Mounted Remote Control Holders</h1>
+    <p class="lede">A set of custom holders made for four different styles of remote control, giving loose remotes a fixed home on the front of a drawer.</p>
   </header>
 
   <div class="sheet-body">
@@ -25,15 +23,11 @@
     <div class="callout-strip">
       <div class="callout">
         <span class="label">Material</span>
-        <span class="value">6061-T6 Aluminum</span>
+        <span class="value">PLA</span>
       </div>
       <div class="callout">
         <span class="label">Process</span>
-        <span class="value">CNC Milled</span>
-      </div>
-      <div class="callout">
-        <span class="label">Tolerance</span>
-        <span class="value">±0.05 mm</span>
+        <span class="value">3-D Printed</span>
       </div>
       <div class="callout">
         <span class="label">Status</span>
@@ -42,11 +36,9 @@
     </div>
 
     <div class="viewer-frame">
-      <!-- TODO: drop the .glb in assets/models/ and point src at it (path is
-           relative to this file in projects/, so ../assets/models/NAME.glb). -->
-      <model-viewer src="../assets/models/REPLACE_WITH_MODEL.glb"
-        alt="3D model of Project Name" camera-controls touch-action="pan-y"
-        auto-rotate shadow-intensity="1"
+      <model-viewer src="../assets/models/custom-remote-control-holder.glb"
+        alt="3D model of the drawer-mounted remote control holders" camera-controls
+        touch-action="pan-y" auto-rotate shadow-intensity="1"
         style="width: 100%; height: 560px; background: var(--paper);">
         <!-- Shown if the browser doesn't support the <model-viewer> element. -->
         <div class="viewer-fallback">
@@ -60,13 +52,13 @@
 
     <div class="notes">
       <h2>Design Brief</h2>
-      <p>What the part needed to do, constraints you were working under (space, load, cost, manufacturing method), and why.</p>
+      <p>Remotes had a tendency to become misplaced or lost between couch cushions without a convenient place to store them. Each of the four remotes in use is a different size, so a single generic holder wouldn't fit them all.</p>
 
       <h2>Approach</h2>
-      <p>Key design decisions — geometry choices, how you validated fit/function, iterations you went through.</p>
+      <p>The drawer the holders hook onto and each remote were measured for length, width, and depth, with clearance left around the buttons so nothing is pressed while a remote sits in its holder. Each holder was shaped to its specific remote and given a hook that clips over the drawer edge.</p>
 
       <h2>Outcome</h2>
-      <p>How it performed, what you'd change next time, lessons learned.</p>
+      <p>A convenient storage solution for loose remotes that needs no modification to the drawer the holders hook onto — the holders simply lift off if the drawer is ever used for something else.</p>
     </div>
 
   </div>
@@ -74,7 +66,7 @@
   <footer class="title-block">
     <div class="tb-cell">
       <span class="tb-label">Title</span>
-      <span class="tb-value">Project Name</span>
+      <span class="tb-value">Drawer-Mounted Remote Control Holders</span>
     </div>
     <div class="tb-cell">
       <span class="tb-label">Navigation</span>
@@ -86,11 +78,11 @@
     </div>
     <div class="tb-cell">
       <span class="tb-label">Sheet</span>
-      <span class="tb-value">X / N</span>
+      <span class="tb-value">003 / 3</span>
     </div>
     <div class="tb-cell">
       <span class="tb-label">Updated</span>
-      <span class="tb-value">2026-07-18</span>
+      <span class="tb-value">2025-11-07</span>
     </div>
   </footer>
 </div>

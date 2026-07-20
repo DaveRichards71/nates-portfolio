@@ -264,6 +264,45 @@ model-viewer:defined .viewer-fallback { display: none; }
   color: var(--accent-orange);
 }
 
+/* Static figure (photo of the finished/installed part) shown alongside the
+   interactive model. Label comes from the data-fig attribute so each figure
+   can carry its own "FIG. N — ..." tab, matching .viewer-frame's styling. */
+.figure-frame {
+  border: var(--border-thick);
+  background: var(--paper);
+  /* reset the browser's default <figure> margin (1em 40px) */
+  margin: 0 0 32px;
+  padding: 20px 16px 16px;
+  position: relative;
+}
+
+.figure-frame::before {
+  content: attr(data-fig);
+  position: absolute;
+  top: -11px;
+  left: 16px;
+  background: var(--paper-white);
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.figure-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.figure-frame figcaption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+
 .notes {
   font-size: 1rem;
   line-height: 1.7;
